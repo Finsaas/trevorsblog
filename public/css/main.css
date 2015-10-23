@@ -1,0 +1,33 @@
+.picture {
+    width: 450px;
+    height:400px;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+.buttons {
+    display: inline;
+    padding: 0px 20px 0px 20px;
+}
+
+.buttonDiv {
+    text-align: center;   
+    padding: 30px 20px 30px 20px;
+}
+
+.likeButton {
+    padding: 30px 30px 30px 30px;
+    list-style-type: none;
+}
+
+.jumbotron {
+    background-image: url("../img/missoula.jpg"); 
+}
+.jumbotron bear p{
+    color: #ffffff;
+}
+
+.socialMedia buttons{
+    display: inline;
+    text-align: center;
+}
