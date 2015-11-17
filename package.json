@@ -23,6 +23,11 @@
     "lodash": "^3.10.1",
     "mongodb-uri": "^0.9.7",
     "mongoose": "^4.1.11",
-    "twit": "^2.1.0"
+    "twit": "^2.1.0",
+    "ejs" : "~0.8.5",
+    "passport" : "0.1.17",
+    "passport-local" : "~0.1.6",
+    "morgan" : "~1.0.0",
+    "method-override" : "~1.0.0"
   }
 }
