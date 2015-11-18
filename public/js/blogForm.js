@@ -1,24 +1,3 @@
-// var BlogPost = React.createClass({
-//     render: function() {
-    
-//       var blogData = this.props.data.map(function(blog){      
-//         return <li>{blog}</li>
-//       });
-
-//         return (
-//         <div>
-//             <ul>
-//               {blogData}
-//             </ul>
-//         </div>
-//           );
-//     }
-// });
-
-
-// React.render(<BlogPost url="/api/blogs"/>, document.getElementById("bloghere"));
-
-
 
 var BlogForm = React.createClass({
 
@@ -27,14 +6,9 @@ var BlogForm = React.createClass({
     e.preventDefault();
 
     var title = React.findDOMNode(this.refs.title).value.trim();
-    var author = React.findDOMNode(this.refs.author).value.trim();
     var body = React.findDOMNode(this.refs.body).value.trim();
 
-    if(!title){
-      return;
-    }
-
-    var data = ({title: title, author: author, body: body});
+    var data = ({title: title, body: body});
     $.ajax({
       url: this.props.url,
       dataType: 'json',
@@ -49,34 +23,56 @@ var BlogForm = React.createClass({
             console.error(this.props.url, status, err.toString())
         }.bind(this)
     })
+
+    },
+
     render: function(){
+      
       return(
         <div>
-          <form>
             <div className="container">
-            <div className="row">
-            <form action="/api/blogs" method="POST" role="form">
-            <legend>Post A Blog</legend>
+                <div className="row">
+                    <form>
+                         <h1>Post A Blog</h1>
         
-            <div className="form-group">
-                <label htmlFor="">Author</label>
-                <input type="text" className="form-control" name = "title" id="" placeholder="Input field">
-            </div>
+                            
+                            <div>
+                            <div className="form-group">
+                                <label>Title</label>
+                                <input type="text" className="form-control" ref = "title" placeholder="Title"/>
+                            </div>
 
-            <div className="form-group">
-                <label htmlFor="">Content</label>
-                <input type="text" className="form-control" name = "body" id="" placeholder="Input field">
-            </div>
-            
-            <button onClick={this.handleSubmit} type="submit" className="btn btn-primary"> Submit </button>
-        </form>
-        </div>
+                            <div className="form-group">
+                                <label>Content</label>
+                                <input type="text" className="form-control" ref = "body" placeholder="Blog post"/>
+                            </div>
+                            <div>
+                                <button onClick={this.handleSubmit} type="submit" className="btn btn-primary"> Submit </button>
+                            </div>
+                            </div>
+                    </form>
+                </div>
+            </div>     
     </div>
+    );
+
+    return(
+        <div >
+            <div class="buttonDiv">         
+                    <button className="navButtons" type="button" onClick="location.href='index.html'">Home</button>
+                    <button className="navButtons" type="button" onClick="location.href='blog.html'">Blogs</button>
+                    <button className="navButtons" type="button" onClick="location.href='contact.html'">Contact</button>
+                    <button className="navButtons" type="button" onClick="location.href='/login'">Login</button>
+                    <button className="navButtons" type="button" onClick="location.href='signup'">Signup</button>
+                    <button className="navButtons" type="button" onClick="location.href='postBlog.html'">Post</button>      
+            </div> 
+           <div>
+                {BlogForm}
+           </div>
+        </div>
         )
-    }
   }
-})
+});
 
-
-React.render(<BlogForm "/api/blogs"/>, document.getElementById('bloghere'));
+React.render(<BlogForm url="/api/blogs"/>, document.getElementById('postHere'));
 

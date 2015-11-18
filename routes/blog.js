@@ -29,14 +29,15 @@ router.route('/')
        res.send("houston we have a problem");
      } else{
        console.log("New blog named " + blogs + " created!");
-       res.redirect('https://trevors-blog.herokuapp.com/blog.html');
+       //res.redirect('https://trevors-blog.herokuapp.com/blog.html');
+       //res.redirect('localhost:3030/blog.html')
        res.send(blogs);
      }
    });
  });
 
 
- router.route('/:id')
+ router.route('/api/blogs/:id')
    .get(function(req, res) {
        mongoose.model('Blog').findById({
            _id: req.params.id

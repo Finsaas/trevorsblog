@@ -11,7 +11,7 @@ module.exports = function(app, passport) {
     });
 
     app.get('/postBlog', isLoggedIn, function(req, res) {
-        res.render('postBlog.ejs', {
+        res.render('postBlog.html', {
             user : req.user
         });
     });

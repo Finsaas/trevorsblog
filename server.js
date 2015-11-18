@@ -5,7 +5,7 @@ var http = require('http');
 var fs = require('fs');
 
 var flash = require('connect-flash');
-var port = process.env.PORT || 3000; 
+var port = process.env.PORT || 3030; 
 var mongoose = require ('mongoose');
 var passport = require('passport');
 
