@@ -1,3 +1,5 @@
+var React = require('react');
+
 var BlogList = React.createClass({
     render: function() {
      
@@ -23,47 +25,13 @@ var BlogList = React.createClass({
 				   	<button className="navButtons" type="button" onClick="location.href='/login'">Login</button>
 				   	<button className="navButtons" type="button" onClick="location.href='/signup'">Signup</button>
 				   	<button className="navButtons" type="button" onClick="location.href='/postBlog.html'">Post</button>		
-	    	</div>    
+	    	  </div>    
 	        <div>
               		{blogData}  	
-            </div>
+          </div>
         </div>
           );
     }
 });
 
-
-var BlogBox = React.createClass({
-
-	getInitialState: function(){
-		return {data: []};
-	},
-
-	loadBlogsFromServer: function(){
-		$.ajax({
-			url:this.props.url,
-			dataType: 'json',
-			cache: false,
-			success: function(data){
-				console.log("We made it!")
-				this.setState({data: data})
-			}.bind(this)
-		});
-	},
-
-	componentDidMount: function(){
-		this.loadBlogsFromServer();
-	},
-
-	render: function(){
-		return(
-			<div>
-				<ul>
-					<BlogList data={this.state.data}/>
-				</ul>
-			</div>
-		);
-	}
-
-});
-React.render(<BlogBox url="/api/blogs"/>, document.getElementById("bloghere"));
+module.exports = BlogList;
