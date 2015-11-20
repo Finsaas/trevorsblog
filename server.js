@@ -16,10 +16,11 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
-
+var CommentSchema = require('./models/comment');
 var BlogSchema = require('./models/blog');
 var blogRoutes = require('./routes/blog');
 var githubRoutes = require('./routes/github');
+var twitterRoutes = require('./routes/twitter');
 
 var options = {
   server:  { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
@@ -94,6 +95,7 @@ app.use(express.static('public'));
 
 app.use('/api/blogs', blogRoutes);
 app.use('/api/github', githubRoutes);
+app.use('/api/twitter', twitterRoutes);
 
 app.get('/', function(req, res){
     res.readFile('index.html');
