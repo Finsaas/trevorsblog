@@ -1,11 +1,10 @@
 var mongoose     = require('mongoose');
-var Schema       = mongoose.Schema;
 
-var BlogSchema   = new Schema({
+var blogSchema   = new mongoose.Schema({
     title: String,
     body: String,
     comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
     date: { type: Date, default: Date.now }
 });
 
-module.exports = mongoose.model('Blog', BlogSchema);
+mongoose.model('Blog', blogSchema);

@@ -30,9 +30,9 @@ var Github = React.createClass({
 			<div>
 				<div className="container">
 					<div className="col-md-4">
-						<div className="well">
-							<h3>Github</h3>
-						</div>
+						<div className="well">							
+								<h3>Github</h3>
+						</div>					
 					</div>		
 				</div>
 				<div>
@@ -42,6 +42,9 @@ var Github = React.createClass({
 						</div>
 					</div>
 				</div>
+				
+						
+				
 			</div>
 		)
 

@@ -7,4 +7,4 @@ var commentSchema = new mongoose.Schema({
 	blog: { type: mongoose.Schema.Types.ObjectId, ref: 'Blog' },
 });
 
-module.exports = mongoose.model('Comment', commentSchema);
+mongoose.model('Comment', commentSchema);

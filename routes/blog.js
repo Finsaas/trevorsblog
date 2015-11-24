@@ -8,7 +8,9 @@ router.route('/')
 
 /* GET All Blogs */
  .get(function(req, res) {
-   mongoose.model('Blog').find({}).populate('comments').exec(function(err, blogs){
+   mongoose.model('Blog').find({})
+   .populate({ path:'comments', populate:{path:'user', select:'local.email'}})
+   .exec(function(err, blogs){
      if(err){
        return console.log(err);
      } else {
@@ -20,10 +22,12 @@ router.route('/')
  .post(function(req, res){
    var title = req.body.title;
    var body = req.body.body;
+   
 
    mongoose.model('Blog').create({
      title: title,
      body: body
+
    }, function(err, blogs){
      if(err){
        res.send("houston we have a problem");
@@ -41,7 +45,7 @@ router.route('/')
    .get(function(req, res) {
        mongoose.model('Blog').findById({
            _id: req.params.id
-       }, function(err, blogs) {
+       }).populate('comments').exec( function(err, blogs) {
            if (err)
                res.send(err);
            res.json(blogs);
@@ -80,8 +84,8 @@ router.route('/:id/comment')
 
     mongoose.model('Comment').create({
       body: req.body.body,
-      user: req.user
-
+      user: req.user,
+      blog: req.params.id
     }, function(err, comment){
       if(err)
         res.send(err)
@@ -93,8 +97,8 @@ router.route('/:id/comment')
             res.send(err)
           blog.comments.push(comment._id)
           blog.save();
-          res.send(comment);
-
+          console.log(comment);
+          res.json(comment);
       })
     })
   });
@@ -103,26 +107,12 @@ router.route('/:id/comments')
   .get(function(req, res){
     mongoose.model('Blog').findById({_id: req.params.id
     })
-     .populate('comments').exec(function(err, comments){
+     .populate({ path:'comments', populate:{path:'user', select:'local.email'}})
+     .exec(function(err, blog){
       if(err)
         res.send(err)
-      res.send(comments)
+      res.send(blog)
      })
   })
 
 module.exports = router;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

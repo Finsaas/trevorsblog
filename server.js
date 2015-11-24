@@ -27,7 +27,7 @@ var options = {
   replset: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }
 };  
 
-var mongodbUri = process.env.MONGOLAB_URI || "mongodb://localhost";
+var mongodbUri = process.env.MONGOLAB_URI || "mongodb://localhost/Blog";
 
 var mongooseUri = uriUtil.formatMongoose(mongodbUri);
 
@@ -66,9 +66,8 @@ if (process.env.NODE_ENV === 'production') {
 
 
 
-
-require('./config/passport')(passport); //passing passport for the configuration
-
+app.set('view engine', 'ejs'); //setting up ejs for templating
+app.use(express.static('public'));
 
 // set up the express application
 app.use(morgan('dev')); //log every request to the console
@@ -77,7 +76,7 @@ app.use(bodyParser.json());//gets information from html forms
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-app.set('view engine', 'ejs'); //setting up ejs for templating
+
 
 // required for passport
 app.use(session({ secret: 'ilovescotchscotchyscotchscotch'})); //session secret
@@ -86,12 +85,11 @@ app.use(passport.session()); //persistent login sessions
 app.use(flash()); //use connect-flash for flash messages stored in session
 
 
+require('./config/passport')(passport); //passing passport for the configuration
+
 // routes--------------------------------------------------------------------------------------
 require('./routes/userRoutes.js')(app, passport);
 
-
-
-app.use(express.static('public'));
 
 app.use('/api/blogs', blogRoutes);
 app.use('/api/github', githubRoutes);

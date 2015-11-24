@@ -24,10 +24,14 @@ var BlogBox = React.createClass({
 	},
 
 	render: function(){
+		var that=this;
+		var newRefresh=function(){
+			that.loadBlogsFromServer();
+		}
 		return(
 			<div>
 				<ul>
-					<BlogList data={this.state.data}/>
+					<BlogList data={this.state.data} newData={newRefresh}/>
 				</ul>
 			</div>
 		);

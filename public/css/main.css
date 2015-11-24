@@ -36,7 +36,8 @@
 }
 
 .jumbotron {
-    background-image: url("../img/missoula.jpg"); 
+    background-image: url("../img/missoula.jpg");
+    text-align:center; 
 }
 .jumbotron bear p{
     color: #ffffff;
@@ -45,4 +46,8 @@
 .socialMedia buttons{
     display: inline;
     text-align: center;
+}
+.container-full{
+  overflow:hidden;
+  word-wrap: break-word;
 }
