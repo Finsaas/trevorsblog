@@ -1,6 +1,9 @@
 .h3.panel-header{
   text-align:center;
 }
+.well{
+  background-color: white;
+}
 
 .picture {
     width: 450px;

@@ -1,3 +1,4 @@
+require('dotenv').load();
 var express = require('express');
 var app = express();
 var path = require('path');
@@ -20,7 +21,7 @@ var CommentSchema = require('./models/comment');
 var BlogSchema = require('./models/blog');
 var blogRoutes = require('./routes/blog');
 var githubRoutes = require('./routes/github');
-var twitterRoutes = require('./routes/twitter');
+var wakaRoutes = require('./routes/wakaTime');
 
 var options = {
   server:  { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
@@ -93,7 +94,7 @@ require('./routes/userRoutes.js')(app, passport);
 
 app.use('/api/blogs', blogRoutes);
 app.use('/api/github', githubRoutes);
-app.use('/api/twitter', twitterRoutes);
+app.use('/api/wakatime', wakaRoutes);
 
 app.get('/', function(req, res){
     res.readFile('index.html');

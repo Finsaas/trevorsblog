@@ -1,26 +1,26 @@
 var React = require('react');
-var TwitterBox = require('./TwitterBox');
+var WakaBox = require('./WakaBox');
 
-var TwitterList = React.createClass({
+var WakaList = React.createClass({
 
 	render: function(){
-		var gitStuff = this.props.data.map(function(commits){
-			if(commits.coms){
-			var commitInfo = commits.coms.map(function(c){
+		var wakaStuff = this.props.data.map(function(waka){
+			
+			var wakaInfo = waka.languages.map(function(c){
 				return(
-					<p>{c.message}</p>
+					<p>{c.name} - {c.percent}</p>
 					)
-				});
-			}
+				})
+			
 			return(
 				<div className="container-fluid">             
 					    <div className="panel panel-default">
-					        <h3 className="panel-header">{commits.repo}</h3>
+					        <h3 className="panel-header">{waka.id}</h3>
 				                <div className="panel-body">
-				                    <p>{commitInfo}</p>
+				                    <p>{wakaInfo}</p>
 				                </div>
 			                	<div className="panel-footer">
-			                   		{commits.timeStamp}
+			                   		
 			                	</div>
 			            </div>
 			    </div>
@@ -28,17 +28,17 @@ var TwitterList = React.createClass({
 		});
 		return(
 			<div>
-				<div className="container">
+				<div className="container" >
 					<div className="col-md-4">
 						<div className="well">
-							<h3>Github</h3>
+							<h3>Wakatime</h3>
 						</div>
 					</div>		
 				</div>
 				<div>
 					<div className="container">
 						<div className="col-md-4">
-							{gitStuff}
+							{wakaStuff}
 						</div>
 					</div>
 				</div>
@@ -48,4 +48,4 @@ var TwitterList = React.createClass({
 	}
 });
 
-module.exports = TwitterList;
+module.exports = WakaList;

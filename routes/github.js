@@ -7,7 +7,7 @@ fetchGithubEvents = function(req, res){
 	
 	axios.get(url)
 		.then(function(response){
-			var myEvents = response.data.slice(0,5).map(function(g){
+			var myEvents = response.data.slice(0,2).map(function(g){
 				if(g.payload.commits){
 				var coms = g.payload.commits.map(function(c){
 					return{"message": c.message, "url": c.url}

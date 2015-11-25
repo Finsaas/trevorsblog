@@ -8,8 +8,8 @@ var Index = React.createClass({
 
 	<div className="jumbotron">
         <div>
-            <h1>Coding Adventure</h1>
-            <p> Follow me while I work through 12 weeks with Montana Code School!</p>
+            <h1 id="JumbotronText">Coding Adventure</h1>
+            <p id="JumbotronText"> Follow me while I work through 12 weeks with Montana Code School!</p>
         </div>    
     </div>
     <div className="col-sm-4">
